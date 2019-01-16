@@ -22,6 +22,7 @@
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3K8-mS-27d">
                             <rect key="frame" x="25" y="25" width="100" height="100"/>
                             <constraints>
+                                <constraint firstAttribute="height" constant="100" id="VNK-t9-VFs"/>
                                 <constraint firstAttribute="width" constant="100" id="YbX-12-nfh"/>
                             </constraints>
                         </imageView>
@@ -44,7 +45,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" red="0.00081011131938739497" green="0.52894199521456486" blue="0.84224554016182462" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="3rG-wq-5jM" firstAttribute="leading" secondItem="m5U-9l-41c" secondAttribute="trailing" constant="10" id="479-wj-ujc"/>
                         <constraint firstItem="3K8-mS-27d" firstAttribute="top" secondItem="d3I-Kn-XBn" secondAttribute="top" id="4Iw-XL-oo4"/>
@@ -61,7 +62,6 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="O5Q-f6-7aZ" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="9Zj-q5-5Ld"/>
                 <constraint firstItem="O5Q-f6-7aZ" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="INN-5C-42J"/>
@@ -73,6 +73,7 @@
             <connections>
                 <outlet property="cityLabel" destination="3rG-wq-5jM" id="KXg-vB-v2w"/>
                 <outlet property="tempLabel" destination="d3I-Kn-XBn" id="rS5-il-7VQ"/>
+                <outlet property="weatherImage" destination="3K8-mS-27d" id="JIY-lh-4PK"/>
             </connections>
             <point key="canvasLocation" x="244.80000000000001" y="-72.863568215892059"/>
         </view>

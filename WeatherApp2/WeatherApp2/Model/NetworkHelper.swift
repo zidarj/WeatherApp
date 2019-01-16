@@ -20,10 +20,16 @@ class NetworkHelper  {
             }
         }
     }
-    static func fetch(url: URLConvertible) -> String {
+    static func fetchDataDay(url: URLConvertible, completion: @escaping ([List]) -> Void) {
         Alamofire.request(url).responseJSON { (response) in
-            print("TEST2")
+            if let val = response.result.value {
+                let json = JSON(val)
+                let data: [List] = json["list"].arrayValue.map({ (j) -> List in
+                    let p = List(withJSON: j)
+                    return p
+                })
+                completion(data)
+            }
         }
-        return "Test2"
     }
 }

@@ -4,7 +4,7 @@
 //
 //  Created by Josip Zidar on 15/01/2019.
 //  Copyright © 2019 Josip Zidar. All rights reserved.
-//
+// http://api.openweathermap.org/data/2.5/forecast?q=Osijek,HR&appid=2287f2b009b077c0b3d90a9a2b566a21
 
 import UIKit
 
@@ -12,12 +12,13 @@ class HeaderViewCell: UITableViewHeaderFooterView {
 
     @IBOutlet weak var tempLabel: UILabel!
     @IBOutlet weak var cityLabel: UILabel!
+    @IBOutlet weak var weatherImage: UIImageView!
     
     
-    func config(json: Double) {
-        let test: Int = Int(json - 273.15)
-        tempLabel.text = String(test)
-        cityLabel.text = "Zagreb"
+    func config(json: WeatherModel) {
+        tempLabel.text = String(Int(json.main.temp - 273.14))
+        cityLabel.text = json.name
+        weatherImage.image = UIImage(named: (json.weather.first?.icon)!)
     }
     /*
     
