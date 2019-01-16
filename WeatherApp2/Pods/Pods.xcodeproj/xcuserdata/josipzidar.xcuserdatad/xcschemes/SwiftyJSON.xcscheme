@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6AD97E6D096B85FF85C770701ED63D92"
-               BuildableName = "Pods_WeatherApp2.framework"
-               BlueprintName = "Pods-WeatherApp2"
+               BlueprintIdentifier = "A680166BC58087C64354B49621F728DE"
+               BuildableName = "SwiftyJSON.framework"
+               BlueprintName = "SwiftyJSON"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6AD97E6D096B85FF85C770701ED63D92"
-            BuildableName = "Pods_WeatherApp2.framework"
-            BlueprintName = "Pods-WeatherApp2"
+            BlueprintIdentifier = "A680166BC58087C64354B49621F728DE"
+            BuildableName = "SwiftyJSON.framework"
+            BlueprintName = "SwiftyJSON"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

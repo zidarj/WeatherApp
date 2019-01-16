@@ -16,6 +16,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        if let vc = window?.rootViewController as? ViewController {
+            let url = URL(string: "https://api.openweathermap.org/data/2.5/weather?lat=45.55&lon=18.69&appid=2287f2b009b077c0b3d90a9a2b566a21")!
+            NetworkHelper.fetchData(url: url) { (data) in
+                vc.currentWeather = data
+                vc.tableView.delegate = vc.self
+                vc.tableView.dataSource = vc.self
+                vc.tableView.reloadData()
+            }
+        }
         return true
     }
 

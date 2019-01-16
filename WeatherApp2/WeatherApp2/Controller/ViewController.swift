@@ -7,26 +7,36 @@
 //
 
 import UIKit
-
+import Alamofire
 class ViewController: UIViewController {
 
    
     @IBOutlet weak var tableView: UITableView!
+    var currentWeather: WeatherModel?
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        tableView.registerHeaderFooterNib(HeaderViewCell.self)
     }
-
-
 }
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //let heder: test = tableView.
-        return UITableViewCell()
+        let cell = UITableViewCell()
+        cell.backgroundColor = UIColor.red
+        return cell
+    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header: HeaderViewCell = tableView.dequeueReusableHeaderFooterView()
+        header.config(json: (currentWeather?.main.temp)!)
+        return header
+    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 150
     }
     
 }
