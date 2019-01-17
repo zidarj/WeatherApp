@@ -30,7 +30,7 @@ class ViewController: UIViewController {
         self.tableView.refreshControl = refreshControl
     }
     @objc private func refreshWeatherData(_ sender: Any) {
-       
+        
         self.locationManager.delegate = self
         self.locationManager.startUpdatingLocation()
         
@@ -78,15 +78,15 @@ extension ViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         self.locationManager.stopUpdatingLocation()
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
-
-            NetworkHelper.fetchData(lon: locValue.longitude, lat: locValue.latitude) { (response) in
-                self.currentWeather = response
-               
-            }
-            NetworkHelper.fetchDataDay(lon: locValue.longitude, lat: locValue.latitude) { (response) in
-                self.dayWeather = response
-                self.tableView.reloadData()
-                self.refreshControl.endRefreshing()
-            }
+        
+        NetworkHelper.fetchData(lon: locValue.longitude, lat: locValue.latitude) { (response) in
+            self.currentWeather = response
+            
+        }
+        NetworkHelper.fetchDataDay(lon: locValue.longitude, lat: locValue.latitude) { (response) in
+            self.dayWeather = response
+            self.tableView.reloadData()
+            self.refreshControl.endRefreshing()
+        }
     }
 }
