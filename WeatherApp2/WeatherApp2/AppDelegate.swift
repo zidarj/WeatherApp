@@ -7,23 +7,25 @@
 //
 
 import UIKit
-
+import CoreLocation
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-
+    let locationManager = CLLocationManager()
+    var url = URL(string: "https://api.openweathermap.org/data/2.5/weather?lat=45.55&lon=18.69&appid=2287f2b009b077c0b3d90a9a2b566a21")!
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        if let vc = window?.rootViewController as? ViewController {
-            let url = URL(string: "https://api.openweathermap.org/data/2.5/weather?lat=45.55&lon=18.69&appid=2287f2b009b077c0b3d90a9a2b566a21")!
-            NetworkHelper.fetchData(url: url) { (data) in
-                vc.currentWeather = data
-                vc.tableView.delegate = vc.self
-                vc.tableView.dataSource = vc.self
-                vc.tableView.reloadData()
-            }
+        self.locationManager.requestAlwaysAuthorization()
+        
+        // For use in foreground
+        self.locationManager.requestWhenInUseAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+            
         }
         return true
     }
@@ -49,7 +51,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
+    
 
 }
 
+extension AppDelegate: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        self.locationManager.stopUpdatingLocation()
+        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
+        url = URL(string: "https://api.openweathermap.org/data/2.5/weather?lat=\(locValue.latitude)&lon=\(locValue.longitude)&appid=2287f2b009b077c0b3d90a9a2b566a21")!
+        if let vc = window?.rootViewController as? ViewController {
+            
+            NetworkHelper.fetchData(url: url) { (data) in
+                vc.currentWeather = data
+                vc.tableView.delegate = vc.self
+                vc.tableView.dataSource = vc.self
+                vc.tableView.reloadData()
+                
+            }
+            let testurl = URL(string: "https://api.openweathermap.org/data/2.5/forecast?lat=\(locValue.latitude)&lon=\(locValue.longitude)&appid=2287f2b009b077c0b3d90a9a2b566a21")
+            vc.test(with: testurl!)
+        }
+        
+    }
+}

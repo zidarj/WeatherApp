@@ -16,10 +16,11 @@ class ViewController: UIViewController {
     var currentWeather: WeatherModel?
     var dayWeather = [List]()
     var allList = [List]()
-    let url = URL(string: "https://api.openweathermap.org/data/2.5/forecast?q=Osijek,HR&appid=2287f2b009b077c0b3d90a9a2b566a21")!
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.registerHeaderFooterNib(HeaderViewCell.self)
+    }
+    func test(with url: URL) {
         NetworkHelper.fetchDataDay(url: url) { (data) in
             self.dayWeather = data
             self.tableView.reloadData()
@@ -43,13 +44,17 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if let c = cell as? WeatherCell {
             if indexPath.row % 8 == 0 {
-                c.backgroundColor = UIColor.red
+                c.backgroundColor = UIColor(hexString: "#00ADD7")
             }else {
-                c.backgroundColor = UIColor.blue
+                c.backgroundColor = UIColor(hexString: "#00ADD7")
             }
              c.config(with: dayWeather[indexPath.row])
-            print(indexPath.row)
+            c.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+            UIView.animate(withDuration: 0.4) {
+                c.transform = CGAffineTransform.identity
+            }
         }
+        
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header: HeaderViewCell = tableView.dequeueReusableHeaderFooterView()
