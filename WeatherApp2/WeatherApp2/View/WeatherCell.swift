@@ -26,8 +26,8 @@ class WeatherCell: UITableViewCell {
     }
     func config(with json: List) {
         imgView.image = UIImage(named: (json.weather.first?.icon)!)
-        maxTemp.text = String(format: "%.2f" ,json.main.temp_max - 273.14)
-        minTemp.text = String(format: "%.2f" ,json.main.temp_min - 273.14)
+        maxTemp.text = String(Int(json.main.temp_max - 273.14))
+        minTemp.text = String(Int(json.main.temp_min - 273.14))
             let timeResult = json.dt
             let date = NSDate(timeIntervalSince1970: TimeInterval(timeResult))
         let dateFormatter = DateFormatter()

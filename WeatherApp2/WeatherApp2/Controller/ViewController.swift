@@ -9,22 +9,31 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import CoreLocation
 class ViewController: UIViewController {
-
-   
+    
+    
     @IBOutlet weak var tableView: UITableView!
     var currentWeather: WeatherModel?
     var dayWeather = [List]()
-    var allList = [List]()
+    private let locationManager = CLLocationManager()
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshWeatherData(_:)), for: .valueChanged)
+        refreshControl.tintColor = UIColor.red
+        
+        return refreshControl
+    }()
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.registerHeaderFooterNib(HeaderViewCell.self)
+        self.tableView.refreshControl = refreshControl
     }
-    func test(with url: URL) {
-        NetworkHelper.fetchDataDay(url: url) { (data) in
-            self.dayWeather = data
-            self.tableView.reloadData()
-        }
+    @objc private func refreshWeatherData(_ sender: Any) {
+       
+        self.locationManager.delegate = self
+        self.locationManager.startUpdatingLocation()
+        
     }
 }
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
@@ -48,7 +57,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
             }else {
                 c.backgroundColor = UIColor(hexString: "#00ADD7")
             }
-             c.config(with: dayWeather[indexPath.row])
+            c.config(with: dayWeather[indexPath.row])
             c.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
             UIView.animate(withDuration: 0.4) {
                 c.transform = CGAffineTransform.identity
@@ -63,5 +72,21 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 150
+    }
+}
+extension ViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        self.locationManager.stopUpdatingLocation()
+        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
+
+            NetworkHelper.fetchData(lon: locValue.longitude, lat: locValue.latitude) { (response) in
+                self.currentWeather = response
+               
+            }
+            NetworkHelper.fetchDataDay(lon: locValue.longitude, lat: locValue.latitude) { (response) in
+                self.dayWeather = response
+                self.tableView.reloadData()
+                self.refreshControl.endRefreshing()
+            }
     }
 }

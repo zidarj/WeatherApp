@@ -9,9 +9,11 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
+import CoreLocation
 class NetworkHelper  {
     private init () {}
-    static func fetchData(url: URLConvertible, completion: @escaping (WeatherModel) -> Void) {
+    static func fetchData(lon: CLLocationDegrees, lat: CLLocationDegrees, completion: @escaping (WeatherModel) -> Void) {
+        let url = URL(string: "https://api.openweathermap.org/data/2.5/weather?lat=\(lat)&lon=\(lon)&appid=2287f2b009b077c0b3d90a9a2b566a21")!
         Alamofire.request(url).responseJSON { (response) in
             if let val = response.result.value {
                 let json = JSON(val)
@@ -20,7 +22,8 @@ class NetworkHelper  {
             }
         }
     }
-    static func fetchDataDay(url: URLConvertible, completion: @escaping ([List]) -> Void) {
+    static func fetchDataDay(lon: CLLocationDegrees, lat: CLLocationDegrees, completion: @escaping ([List]) -> Void) {
+        let url = URL(string: "https://api.openweathermap.org/data/2.5/forecast?lat=\(lat)&lon=\(lon)&appid=2287f2b009b077c0b3d90a9a2b566a21")!
         Alamofire.request(url).responseJSON { (response) in
             if let val = response.result.value {
                 let json = JSON(val)
