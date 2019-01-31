@@ -10,14 +10,19 @@ import UIKit
 
 class HeaderViewCell: UITableViewHeaderFooterView {
 
-    @IBOutlet weak var tempLabel: UILabel!
-    @IBOutlet weak var cityLabel: UILabel!
+    @IBOutlet weak var currentTempLabel: UILabel!
+    @IBOutlet weak var cityNameLabe: UILabel!
     @IBOutlet weak var weatherImage: UIImageView!
     
+    @IBOutlet weak var bgImage: UIImageView!
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.width/2)
+    }
     
     func config(json: WeatherModel) {
-        tempLabel.text = String(Int(json.main.temp - 273.14))
-        cityLabel.text = json.name
+        currentTempLabel.text = "\(Int(json.main.temp - 273.14))°C"
+        cityNameLabe.text = json.name
         weatherImage.image = UIImage(named: (json.weather.first?.icon)!)
     }
     /*

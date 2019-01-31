@@ -28,7 +28,7 @@
 		7E235A9C21EF19CB00F12F56 /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
 		7E235A9E21EF3B6000F12F56 /* DayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayModel.swift; sourceTree = "<group>"; };
 		7E235AA021EF668E00F12F56 /* WeatherCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCell.swift; sourceTree = "<group>"; };
-		7EABE40B21EDC937007D3BD8 /* WeatherApp2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp2.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7EABE40B21EDC937007D3BD8 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EABE40E21EDC937007D3BD8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7EABE41021EDC937007D3BD8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		7EABE41321EDC937007D3BD8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -67,7 +67,7 @@
 		7EABE40C21EDC937007D3BD8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7EABE40B21EDC937007D3BD8 /* WeatherApp2.app */,
+				7EABE40B21EDC937007D3BD8 /* WeatherApp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -144,9 +144,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		7EABE40A21EDC937007D3BD8 /* WeatherApp2 */ = {
+		7EABE40A21EDC937007D3BD8 /* WeatherApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7EABE41D21EDC93E007D3BD8 /* Build configuration list for PBXNativeTarget "WeatherApp2" */;
+			buildConfigurationList = 7EABE41D21EDC93E007D3BD8 /* Build configuration list for PBXNativeTarget "WeatherApp" */;
 			buildPhases = (
 				EE5287ED0653898466379CE8 /* [CP] Check Pods Manifest.lock */,
 				7EABE40721EDC937007D3BD8 /* Sources */,
@@ -158,9 +158,9 @@
 			);
 			dependencies = (
 			);
-			name = WeatherApp2;
+			name = WeatherApp;
 			productName = WeatherApp2;
-			productReference = 7EABE40B21EDC937007D3BD8 /* WeatherApp2.app */;
+			productReference = 7EABE40B21EDC937007D3BD8 /* WeatherApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -183,7 +183,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 7EABE40621EDC937007D3BD8 /* Build configuration list for PBXProject "WeatherApp2" */;
+			buildConfigurationList = 7EABE40621EDC937007D3BD8 /* Build configuration list for PBXProject "WeatherApp" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -196,7 +196,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7EABE40A21EDC937007D3BD8 /* WeatherApp2 */,
+				7EABE40A21EDC937007D3BD8 /* WeatherApp */,
 			);
 		};
 /* End PBXProject section */
@@ -431,7 +431,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = weatherapp2.WeatherApp2;
+				PRODUCT_BUNDLE_IDENTIFIER = weatherapp.WeatherApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -451,7 +451,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = weatherapp2.WeatherApp2;
+				PRODUCT_BUNDLE_IDENTIFIER = weatherapp.WeatherApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -461,7 +461,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7EABE40621EDC937007D3BD8 /* Build configuration list for PBXProject "WeatherApp2" */ = {
+		7EABE40621EDC937007D3BD8 /* Build configuration list for PBXProject "WeatherApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7EABE41B21EDC93E007D3BD8 /* Debug */,
@@ -470,7 +470,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7EABE41D21EDC93E007D3BD8 /* Build configuration list for PBXNativeTarget "WeatherApp2" */ = {
+		7EABE41D21EDC93E007D3BD8 /* Build configuration list for PBXNativeTarget "WeatherApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7EABE41E21EDC93E007D3BD8 /* Debug */,

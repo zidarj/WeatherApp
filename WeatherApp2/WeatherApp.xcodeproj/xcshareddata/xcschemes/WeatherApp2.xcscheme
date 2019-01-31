@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7EABE40A21EDC937007D3BD8"
-            BuildableName = "WeatherApp2.app"
-            BlueprintName = "WeatherApp2"
-            ReferencedContainer = "container:WeatherApp2.xcodeproj">
+            BuildableName = "WeatherApp.app"
+            BlueprintName = "WeatherApp"
+            ReferencedContainer = "container:WeatherApp.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -56,9 +56,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "7EABE40A21EDC937007D3BD8"
-            BuildableName = "WeatherApp2.app"
-            BlueprintName = "WeatherApp2"
-            ReferencedContainer = "container:WeatherApp2.xcodeproj">
+            BuildableName = "WeatherApp.app"
+            BlueprintName = "WeatherApp"
+            ReferencedContainer = "container:WeatherApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>

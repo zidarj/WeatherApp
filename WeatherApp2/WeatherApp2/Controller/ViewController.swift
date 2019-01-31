@@ -35,6 +35,9 @@ class ViewController: UIViewController {
         self.locationManager.startUpdatingLocation()
         
     }
+    func updateHeaderView() {
+        print("Test")
+    }
 }
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -88,5 +91,10 @@ extension ViewController: CLLocationManagerDelegate {
             self.tableView.reloadData()
             self.refreshControl.endRefreshing()
         }
+    }
+}
+extension ViewController {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        updateHeaderView()
     }
 }
